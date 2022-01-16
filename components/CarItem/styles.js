@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   controls: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginTop: 175
+    marginTop: 50
   },
   controlsButton: {
     borderWidth: 1,
@@ -66,6 +66,13 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     padding: 18,
     marginLeft: 25
+  },
+  carImage: {
+    height: 150,
+    width: 250,
+    // marginLeft: 50,
+    // marginTop: 30
+    position: 'absolute'
   }
 })
 

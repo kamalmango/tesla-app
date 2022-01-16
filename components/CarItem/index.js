@@ -17,10 +17,10 @@ const CarItem = () => {
 
   return (
     <View style={styles.carContainer}>
-      <ImageBackground 
+      {/* <ImageBackground 
         source={require('../../assets/background.png')}
         style={styles.backgroundImage}
-      />
+      /> */}
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity>
@@ -40,8 +40,15 @@ const CarItem = () => {
       <View style={styles.status} >
         <Text style={styles.statusText}>Parked</Text>
       </View>
-      <ScrollView>
+      {/* Car */}
+
+      <View>
+        <Image style={styles.carImage} source={require('../../assets/tesla-model-s.png')} />
+      </View>
+
         {/* Control Icons  */}
+      <ScrollView>
+
         <View style={styles.controls}>
           <TouchableOpacity style={styles.controlsButton}>
             <FontAwesomeIcon style={styles.icon} icon={ faFan } size={24} />
