@@ -1,15 +1,61 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, ImageBackground, Image, TouchableOpacity } from 'react-native';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faCog, faToolbox, faFan, faKey, faLock, faUnlock } from '@fortawesome/free-solid-svg-icons';
 import styles from './styles';
 
 const CarItem = () => {
+  const [locked, setLocked] = useState(false)
+  const clickLock = () => {
+    if (locked) {
+      setLocked(false)
+    } else {
+      setLocked(true)
+    }
+  }
+
   return (
     <View style={styles.carContainer}>
+      <ImageBackground 
+        source={require('../../assets/background.png')}
+        style={styles.backgroundImage}
+      />
       {/* Header */}
       <View style={styles.header}>
-        <Text>Settings</Text>
-        <Text>NazMobile</Text>
-        <Text>Surprise</Text>
+        <TouchableOpacity>
+          <FontAwesomeIcon style={styles.icon} icon={ faCog } size={24} />
+        </TouchableOpacity>
+        <Text style={styles.headerTitle}>MangoMobile</Text>
+        <TouchableOpacity>
+          <FontAwesomeIcon style={styles.icon}  icon={ faToolbox } size={24} />
+        </TouchableOpacity>
+      </View>
+      {/* Milage */}
+      <View style={styles.batterySection}>
+        <Image style={styles.batteryImage} source={require('../../assets/battery.png')} />
+        <Text style={styles.batteryText}>150 mi</Text>
+      </View>
+      {/* Status */}
+      <View style={styles.status} >
+        <Text style={styles.statusText}>Parked</Text>
+      </View>
+      {/* Control Icons  */}
+      <View style={styles.controls}>
+        <TouchableOpacity style={styles.controlsButton}>
+          <FontAwesomeIcon style={styles.icon} icon={ faFan } size={24} />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.controlsButton}>
+          <FontAwesomeIcon style={styles.icon} icon={ faKey } size={24} />
+        </TouchableOpacity>
+        <TouchableOpacity 
+          style={styles.controlsButton}
+          onPress={clickLock}
+        >
+          <FontAwesomeIcon 
+            style={styles.icon} 
+            icon={locked ? faLock : faUnlock} size={24} 
+          />
+        </TouchableOpacity>
       </View>
     </View>
   )
