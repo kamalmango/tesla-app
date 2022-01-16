@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, ImageBackground, Image, TouchableOpacity } from 'react-native';
+import { View, Text, ImageBackground, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCog, faToolbox, faFan, faKey, faLock, faUnlock } from '@fortawesome/free-solid-svg-icons';
 import styles from './styles';
+import Menu from '../Menu';
 
 const CarItem = () => {
   const [locked, setLocked] = useState(false)
@@ -39,24 +40,28 @@ const CarItem = () => {
       <View style={styles.status} >
         <Text style={styles.statusText}>Parked</Text>
       </View>
-      {/* Control Icons  */}
-      <View style={styles.controls}>
-        <TouchableOpacity style={styles.controlsButton}>
-          <FontAwesomeIcon style={styles.icon} icon={ faFan } size={24} />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.controlsButton}>
-          <FontAwesomeIcon style={styles.icon} icon={ faKey } size={24} />
-        </TouchableOpacity>
-        <TouchableOpacity 
-          style={styles.controlsButton}
-          onPress={clickLock}
-        >
-          <FontAwesomeIcon 
-            style={styles.icon} 
-            icon={locked ? faLock : faUnlock} size={24} 
-          />
-        </TouchableOpacity>
-      </View>
+      <ScrollView>
+        {/* Control Icons  */}
+        <View style={styles.controls}>
+          <TouchableOpacity style={styles.controlsButton}>
+            <FontAwesomeIcon style={styles.icon} icon={ faFan } size={24} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.controlsButton}>
+            <FontAwesomeIcon style={styles.icon} icon={ faKey } size={24} />
+          </TouchableOpacity>
+          <TouchableOpacity 
+            style={styles.controlsButton}
+            onPress={clickLock}
+          >
+            <FontAwesomeIcon 
+              style={styles.icon} 
+              icon={locked ? faLock : faUnlock} size={24} 
+            />
+          </TouchableOpacity>
+        </View>
+        {/* Menu */}
+        <Menu />
+      </ScrollView>
     </View>
   )
 }
